@@ -1,6 +1,6 @@
 <template>
   <form id="product-form" @submit.prevent="createProduct">
-    <span>Cadastrar Produto</span>
+    <span>Editar Produto</span>
     <div class="input-container">
       <label for="description">Descrição </label>
       <input
@@ -81,7 +81,22 @@
       />
       <label for="destaque">Em Destaque?</label>
     </div>
-    <input type="submit" class="submit-btn" value="Cadastrar" />
+    <div class="buttons">
+      <button
+        class="submit-btn"
+        value="Salvar"
+        @click="updateProduct($event, $route.params.id)"
+      >
+        Salvar
+      </button>
+      <button
+        class="delete-btn"
+        value="Excluir"
+        @click="deleteProduct(this.$route.params.id)"
+      >
+        Excluir
+      </button>
+    </div>
   </form>
 </template>
 
@@ -144,41 +159,35 @@ export default {
   },
 
   methods: {
-    async createProduct(e) {
-      e.preventDefault();
-      if (
-        this.description != null &&
-        this.description != "" &&
-        this.category != null &&
-        this.category != "" &&
-        this.un != null &&
-        this.un != "" &&
-        this.storage != null &&
-        this.storage != "" &&
-        this.price != null &&
-        this.price != ""
-      ) {
-        const data = {
-          description: this.description,
-          category: this.category,
-          un: this.un,
-          storage: this.storage,
-          price: this.price,
-          destaque: this.destaque,
-        };
-        console.log(data);
-        const dataJson = JSON.stringify(data);
-        const req = await fetch("http://localhost:3000/products", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: dataJson,
-        });
-        const res = await req.json();
+    async deleteProduct(id) {
+      const reqD = await fetch(`http://localhost:3000/products/${id}`, {
+        method: "DELETE",
+      });
+      const resDelete = await reqD.json();
+      this.$router.go();
+      alert("Cadastro excluído com sucesso");
+    },
 
-        alert("Cadastro realizado com sucesso");
-      } else {
-        alert("Você precisa preencher todos os campos");
-      }
+    async updateProduct(event, id) {
+      const data = {
+        description: this.description,
+        category: this.category,
+        un: this.un,
+        storage: this.storage,
+        price: this.price,
+        destaque: this.destaque,
+      };
+
+      const dataJson = JSON.stringify(data);
+      const req = await fetch(`http://localhost:3000/products/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: dataJson,
+      });
+
+      alert("Dados atualizados com sucesso");
+
+      const res = await req.json();
     },
   },
 
@@ -273,9 +282,31 @@ span {
   text-align: center;
 }
 
-.submit-btn:hover {
+.delete-btn {
+  width: 101px;
+  height: 31px;
+
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #214171;
+
+  color: #214171;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+
+  margin-left: 1rem;
+}
+
+.submit-btn:hover .delete-btn:hover {
   background: #061a36;
 }
+.buttons {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 p {
   font-size: 0.8rem;
   margin: 3px;

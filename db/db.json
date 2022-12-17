@@ -1,85 +1,31 @@
 {
   "products": [
     {
-      "id": 1,
-      "imagem": "",
-      "description": "Produto X",
-      "category": "Categoria X",
-      "un": "Unidade",
-      "storage": 12,
-      "price": "R$ 100,0"
-    },
-    {
-      "id": 2,
-      "imagem": "",
-      "description": "Produto Y",
-      "category": "Categoria Y",
-      "un": "Kilo",
-      "storage": 20,
-      "price": "R$ 150,0"
-    },
-    {
-      "id": 3,
-      "imagem": "",
-      "description": "Produto Z",
-      "category": "Categoria Z",
-      "un": "Metro",
-      "storage": 100,
-      "price": "R$ 180,0"
-    },
-    {
-      "description": "Produto 01",
-      "category": "Categoria B",
-      "un": "Metro",
-      "storage": "1",
-      "price": "10",
+      "description": "Produto 07",
+      "category": "Categoria C",
+      "un": "kilo",
+      "storage": "500",
+      "price": "300",
       "destaque": null,
-      "id": 4
+      "id": 1
     },
     {
       "description": "Produto 02",
-      "category": "Categoria C",
-      "un": "kilo",
-      "storage": "35",
-      "price": "120",
+      "category": "Categoria B",
+      "un": "Metro",
+      "storage": "12",
+      "price": "3",
       "destaque": null,
-      "id": 5
+      "id": 2
     },
     {
       "description": "Produto 03",
       "category": "Categoria C",
-      "un": "Metro",
-      "storage": "6",
+      "un": "kilo",
+      "storage": "12",
       "price": "9",
       "destaque": null,
-      "id": 6
-    },
-    {
-      "description": "Produto 04",
-      "category": "Categoria C",
-      "un": "Metro",
-      "storage": "6",
-      "price": "3",
-      "destaque": null,
-      "id": 7
-    },
-    {
-      "description": "Produto 05",
-      "category": "Categoria C",
-      "un": "Unidade",
-      "storage": "6",
-      "price": "300",
-      "destaque": null,
-      "id": 8
-    },
-    {
-      "description": "Produto 06",
-      "category": "Categoria C",
-      "un": "Metro",
-      "storage": "6",
-      "price": "3",
-      "destaque": null,
-      "id": 9
+      "id": 3
     }
   ],
   "clients": [
