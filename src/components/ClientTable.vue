@@ -34,10 +34,6 @@ export default {
       const data = await req.json();
 
       this.clients = data;
-      console.log(this.clients);
-    },
-    async getId(id) {
-      console.log(id);
     },
   },
   mounted() {

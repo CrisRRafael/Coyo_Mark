@@ -51,10 +51,9 @@ export default {
       const data = await req.json();
 
       this.products = data;
-      console.log(this.products);
     },
     async getId(id) {
-      console.log(id);
+      this.$router.push(`/updateproduct/${id}`);
     },
   },
   mounted() {

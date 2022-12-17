@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <TitlePage :title="titlePage" />
-    <!-- <div id="cards"> -->
     <Card
       :textCard="text"
       :valueCard="value"
@@ -15,7 +14,6 @@
       :image="image_src_product"
       :alt="image_name_product"
     />
-    <!-- </div> -->
 
     <ProductList :textList="text_list" />
   </div>
@@ -40,15 +38,26 @@ export default {
     return {
       titlePage: "Dashboard",
       text: "Número de Clientes",
-      value: 20,
+      value: "",
       image_src: ImagemClient,
       image_name: "Clientes",
       text_product: "Produtos Cadastrados",
-      value_product: 25,
+      value_product: "",
       image_src_product: ImagemProduct,
       image_name_product: "Produtos",
       text_list: "Listagem de Produtos em Destaque",
     };
+  },
+  async mounted() {
+    const req_products = await fetch("http://localhost:3000/products");
+    const data_products = await req_products.json();
+
+    this.value_product = data_products.length;
+
+    const req_clients = await fetch("http://localhost:3000/clients");
+    const data_clients = await req_clients.json();
+
+    this.value = data_clients.length;
   },
 };
 </script>
@@ -60,9 +69,7 @@ export default {
   margin-left: 42rem;
 }
 
-/* @media (max-width: 1635px) {
-  #cards {
-    display: flex;
-  }
-} */
+h1 {
+  margin-left: 60rem;
+}
 </style>
