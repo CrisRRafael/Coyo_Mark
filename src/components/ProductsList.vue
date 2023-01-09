@@ -36,28 +36,36 @@
 </template>
 
 <script>
-export default {
-  name: "ProductsList",
-  props: ["textList"],
-  data() {
-    return {
-      products: null,
-      products_id: null,
-    };
-  },
-  methods: {
-    async getProducts() {
-      const req = await fetch("http://localhost:3000/products");
-      const data = await req.json();
+// export default {
+//   name: "ProductsList",
+//   props: ["textList"],
+//   data() {
+//     return {
+//       products: null,
+//       products_id: null,
+//     };
+//   },
+//   methods: {
+//     async getProducts() {
+//       const req = await fetch("http://localhost:3000/products");
+//       const data = await req.json();
 
-      this.products = data;
-    },
-    async getId(id) {
-      this.$router.push(`/updateproduct/${id}`);
-    },
-  },
+//       this.products = data;
+//     },
+//     async getId(id) {
+//       this.$router.push(`/updateproduct/${id}`);
+//     },
+//   },
+//   mounted() {
+//     this.getProducts();
+//   },
+// };
+import Products from "@/src/components/products";
+export default {
   mounted() {
-    this.getProducts();
+    Products.listar().then((resposta) => {
+      console.log(resposta);
+    });
   },
 };
 </script>
